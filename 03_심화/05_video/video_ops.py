@@ -9,7 +9,11 @@ def process_frame(frame):
     # - frame : 원본 BGR 컬러 영상
     # - Resize(160×120) → Gray → GaussianBlur(3×3) → Canny(80,160)
     # - 생성된 edge는 단일 채널(흑백) 에지 영상
-    small=cv2.resize(frame,(160,120))
+    # 프레임 크기 조정
+    # - frame : 원본 프레임
+    # - (160,120) : 출력 해상도
+    # - INTER_AREA : 축소(Downsampling) 시 품질 손실을 줄이기 위한 보간법
+    small=cv2.resize(frame,(160,120), interpolation=cv2.INTER_AREA)
     # 컬러(BGR) 영상을 그레이스케일 영상으로 변환
     # - Canny 연산 전에 단일 채널 영상 생성
     gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
