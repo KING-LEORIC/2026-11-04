@@ -50,7 +50,9 @@ for shape_name,shape in [("rect",cv2.MORPH_RECT),("ellipse",cv2.MORPH_ELLIPSE)]:
 
             # Opening 적용
             # - binary : 입력 이진 영상
-            # - MORPH_OPEN : Erosion 후 Dilation 수행
+            # - MORPH_OPEN : 침식(Erosion) 후 팽창(Dilation) 수행하는 열기 연산 //작은 노이즈는 사라지고 큰 객체만 남는 효과
+            # -- 침식(Erosion): 흰색 객체를 깎아서 작게 만듦
+            # -- 팽창(Dilation): 깎인 객체를 다시 키움
             # - kernel : 현재 실험에 사용할 구조 요소
             # - iterations : 연산 반복 횟수
             # - result : Opening 결과 영상
